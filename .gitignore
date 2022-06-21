@@ -1,0 +1,6 @@
+__pycache__/
+.vscode/
+Vips/text_output
+Vips/vips_output.html
+Vips/Screenshots/
+geckodriver.log
