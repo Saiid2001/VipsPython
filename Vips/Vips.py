@@ -9,8 +9,7 @@ import json
 
 from urllib.parse import urlparse
 from datetime import datetime
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from browser.deploy_firefox import deploy_firefox
 from BlockExtraction import BlockExtraction
 from BlockVo import BlockVo
 from SeparatorDetection import SeparatorDetection
@@ -112,29 +111,7 @@ class Vips:
             print ("Invalid address: " + str(urlStr))
       
     def setDriver(self):
-        CHROME_PATH = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"  # chrome path
-        #CHROME_PATH = r"C:\Users\Tarc\AppData\Local\Google\Chrome\Application\chrome.exe"
-        CHROMEDRIVER_PATH = r"C:\chromedriver_win32\chromedriver.exe" # driver path
-        #ADBLOCK_PATH = r"C:\Users\Hard-\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\cfhdojbkjhnklbpkdaibdccddilifddb"
-        """
-        WIDTH = 1080
-        HEIGHT = 1920
-        PIXEL_RATIO = 1.0
-        UA = 'Mozilla/5.0 (Linux; Android 4.1.1; GT-N7100 Build/JRO03C) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/35.0.1916.138 Mobile Safari/537.36 T7/6.3'
-        
-        mobileEmulation = {"deviceMetrics": {"width": WIDTH, "height": HEIGHT, "pixelRatio": PIXEL_RATIO}, "userAgent": UA}
-        """
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-        chrome_options.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
-        chrome_options.add_argument('--disable-gpu')
-        #chrome_options.add_experimental_option('mobileEmulation', mobileEmulation)
-        #chrome_options.add_argument('--disable-popup-blocking')
-        #chrome_options.add_argument('load-extention='+ADBLOCK_PATH)
-        #chrome_options.add_extension('Adblock-Plus_v3.1.crx')
-        chrome_options.binary_location = CHROME_PATH        
-        self.browser = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
-        
+        self.browser = deploy_firefox()
 
     def toDOM(self, obj, parentNode=None):
         if (isinstance(obj,str)):

@@ -47,7 +47,7 @@ class ImageOut:
                 line = (cor[2],cor[1],cor[2],cor[3])
                 dr.line(line, fill="red", width=1)
                 ###############                ####################
-                font = ImageFont.truetype("arial.ttf", 15)
+                font = ImageFont.load_default()
                 dr.text((blockVo.x,blockVo.y),blockVo.id,(255,0,0),font=font)
                 #if blockVo.boxs[0].tag != None and blockVo.boxs[0].text != None and not blockVo.boxs[0].text.isspace():
                 
